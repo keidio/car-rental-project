@@ -1,4 +1,13 @@
 Requirements:
+- BE module
+- FE module
+- client db / car db
+    - list of clients
+    - insurance for car
+    - client registration
+    - current client/car booking
+    - date range (calendar) - part of booking
+    - location and time of pick-up and return
 - rent cars
   - given client
   - choose a car
@@ -6,14 +15,7 @@ Requirements:
   - agree to terms and conditions
   - pay when collect
   - name, surname, phone, email, address, driver licence provided (yes/no), primary key, etc
-  - save rentals to db 
-- client db / car db
-  - list of clients
-  - insurance for car
-  - client registration
-  - current client/car booking
-  - date range (calendar) - part of booking
-  - location and time of pick-up and return
+  - save rentals to db
 - registration page + login
   -  client registration
   - registration form
