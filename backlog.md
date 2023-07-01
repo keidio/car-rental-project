@@ -1,0 +1,34 @@
+Requirements:
+- rent cars
+  - given client
+  - choose a car
+  - choose a period of time (based on calendar)
+  - agree to terms and conditions
+  - pay when collect
+  - name, surname, phone, email, address, driver licence provided (yes/no), primary key, etc
+  - save rentals to db 
+- client db / car db
+  - list of clients
+  - insurance for car
+  - client registration
+  - current client/car booking
+  - date range (calendar) - part of booking
+  - location and time of pick-up and return
+- registration page + login
+  -  client registration
+  - registration form
+    - name, surname, phone, email
+  - terms and services - client must accept
+- pricing
+  - page with prices
+  - each car has a per day price
+- main page
+  - search
+  - sorting cars by categories
+  - available car list and prices
+  - contact info / page for common questions 
+  - advertisements
+    - a banner section to sell adv spots for Google
+- payment
+  - payment options available for clients
+  - pay on collect would remove the need to have separate page though
