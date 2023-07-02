@@ -9,5 +9,16 @@
     "hasDrivingLicence":true,
     "registrationDateTime":"2023-07-02T11:38:11.735674",
     "dateOfBirth":"1990-08-08"
+  },
+  {
+    "id":2,
+    "name":"Denis",
+    "surname":"S",
+    "phone":"555-658-844",
+    "email":"denis@denis.com",
+    "address":"Estonia",
+    "hasDrivingLicence":true,
+    "registrationDateTime":"2023-07-02T11:38:11.735674",
+    "dateOfBirth":"1995-10-09"
   }
 ]
