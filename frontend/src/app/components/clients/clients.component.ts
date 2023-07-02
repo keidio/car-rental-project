@@ -3,6 +3,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
 import {ClientService} from "../../services/client/client.service";
+import {Client} from "../../models/client";
 export interface UserData {
   id: string;
   name: string;
@@ -49,6 +50,8 @@ const NAMES: string[] = [
 export class ClientsComponent implements AfterViewInit {
   displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
   dataSource: MatTableDataSource<UserData>;
+  clients!: Array<Client>;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
@@ -62,6 +65,11 @@ export class ClientsComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.clientService.getAllClients()
+      .subscribe(clients => {
+        this.clients = clients;
+        console.log(`results: ${JSON.stringify(clients, null, 2)}`);
+      });
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
