@@ -1,0 +1,13 @@
+[
+  {
+    "id":1,
+    "name":"Keidi",
+    "surname":"O",
+    "phone":"555-657-584",
+    "email":"keidi@keidi.com",
+    "address":"Estonia",
+    "hasDrivingLicence":true,
+    "registrationDateTime":"2023-07-02T11:38:11.735674",
+    "dateOfBirth":"1990-08-08"
+  }
+]
