@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Client} from "../../models/client";
 import {Observable} from "rxjs";
+import {allClients} from "../../models/links";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,6 @@ export class ClientService {
   ) { }
 
   getAllClients(): Observable<Array<Client>>{
-    return this.http.get<Array<Client>>('/assets/clients.json')
+    return this.http.get<Array<Client>>(allClients)
   }
 }
