@@ -13,13 +13,17 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { HomePageComponent } from './components/home-page/home-page.component';
 import {RouterModule, RouterOutlet} from "@angular/router";
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
     TopBarComponent,
     NavigationBarComponent,
-    HomePageComponent
+    HomePageComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
@@ -33,8 +37,11 @@ import {RouterModule, RouterOutlet} from "@angular/router";
     RouterOutlet,
     RouterModule.forRoot([
       {path: '', component: HomePageComponent},
-      {path: 'clients', component:ClientsComponent}
+      {path: 'clients', component: ClientsComponent},
+      {path:'**', component:NotFoundPageComponent}
     ]),
+    MatIconModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
