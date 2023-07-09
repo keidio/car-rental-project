@@ -70,6 +70,10 @@ export class ClientsComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.fetchClient();
+  }
+
+  private fetchClient() {
     this.clientService.getAllClients()
       .subscribe(clients => {
         this.clients = clients;
@@ -77,6 +81,7 @@ export class ClientsComponent implements OnInit {
         console.log(`results: ${JSON.stringify(clients, null, 2)}`);
       });
   }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -87,6 +92,13 @@ export class ClientsComponent implements OnInit {
 
   onSubmit() {
     console.log(`data to send: ${JSON.stringify(this.clientForm.value, null, 2)}`);
+
+    this.clientService.createClient(this.clientForm.value as Client)
+      .subscribe(value => {
+        this.clientForm.reset();
+        this.fetchClient();
+      });
+
 
   }
 }
