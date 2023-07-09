@@ -6,6 +6,6 @@ export interface Client{
   email: string;
   address: string | null;
   hasDrivingLicence: boolean;
-  registrationDateTime: string;
+  registrationDateTime: string | null;
   dateOfBirth: string;
 }
