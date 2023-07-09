@@ -78,14 +78,14 @@
   <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
     <label for="name">Name:</label>
     <input [formControl]="name" type="text" id="name">
-    <div *ngIf="name.invalid">
+    <div class="alert" *ngIf="name.invalid && (name.touched || name.dirty)">
       <div *ngIf="name.errors?.['required']">Name field is required</div>
       <div *ngIf="name.errors?.['minlength']">Minimum length of field is 2</div>
     </div>
 
     <label for="surname">Surname:</label>
     <input [formControl]="surname" type="text" id="surname">
-    <div *ngIf="surname.invalid">
+    <div class="alert" *ngIf="surname.invalid && (surname.touched || surname.dirty)">
       <div *ngIf="surname.errors?.['required']">Surname field is required</div>
       <div *ngIf="surname.errors?.['minlength']">Minimum length of field is 2</div>
     </div>
@@ -93,7 +93,7 @@
     <!-- TODO: improve validation of phone format-->
     <label for="phone">Phone:</label>
     <input [formControl]="phone" type="text" id="phone">
-    <div *ngIf="phone.invalid">
+    <div class="alert" *ngIf="phone.invalid && (phone.touched || phone.dirty)">
       <div *ngIf="phone.errors?.['required']">Phone field is required</div>
       <div *ngIf="phone.errors?.['minlength']">Minimum length of field is 7</div>
     </div>
@@ -102,7 +102,7 @@
     <label for="email">Email:</label>
 <!--    <input formControlName="email" type="text" id="email">-->
     <input [formControl]="email" type="text" id="email">
-    <div *ngIf="email.invalid">
+    <div class="alert" *ngIf="email.invalid && (email.touched || email.dirty)">
       <div *ngIf="email.errors?.['required']">Email field is required</div>
       <div *ngIf="email.errors?.['email']">Wrong email format</div>
     </div>
@@ -112,13 +112,13 @@
 
     <label for="hasDrivingLicence">Has driving licence:</label>
     <input [formControl]="drivingLicence" type="text" id="hasDrivingLicence">
-    <div *ngIf="drivingLicence.invalid">
+    <div class="alert" *ngIf="drivingLicence.invalid && (drivingLicence.touched || drivingLicence.dirty)">
       <div *ngIf="drivingLicence.errors?.['required']">Driving licence field is required</div>
     </div>
 
     <label for="dateOfBirth">Date of birth:</label>
     <input [formControl]="dateOfBirth" type="text" id="dateOfBirth">
-    <div *ngIf="dateOfBirth.invalid">
+    <div class="alert" *ngIf="dateOfBirth.invalid && (dateOfBirth.touched || dateOfBirth.dirty)">
       <div *ngIf="dateOfBirth.errors?.['required']">Date of birth field is required</div>
       <div *ngIf="dateOfBirth.errors?.['minlength']">Minimum length of field is 10</div>
     </div>
