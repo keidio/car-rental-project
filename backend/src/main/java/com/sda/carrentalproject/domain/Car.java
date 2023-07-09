@@ -31,4 +31,9 @@ public class Car {
 
     @Enumerated(EnumType.STRING)
     private Color color;
+
+    private boolean available;
+
+    private PriceList priceList;
+
 }
