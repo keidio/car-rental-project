@@ -90,6 +90,7 @@
       <div *ngIf="surname.errors?.['minlength']">Minimum length of field is 2</div>
     </div>
 
+    <!-- TODO: improve validation of phone format-->
     <label for="phone">Phone:</label>
     <input [formControl]="phone" type="text" id="phone">
     <div *ngIf="phone.invalid">
