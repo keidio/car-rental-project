@@ -25,7 +25,7 @@ public class CarController {
 
     @GetMapping("/cars")
     List<CarDto> getAllCars(){
-        log.info("all clients endpoint");
+        log.info("all cars endpoint");
         var cars = carService.getAllCars();
 
         return cars.stream()
