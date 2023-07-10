@@ -17,5 +17,14 @@ public class CarService {
         this.carRepository = carRepository;
     }
 
+    public List<Car> getAllCars() {
+        log.info("getting all clients from repository");
+        var result = carRepository.findAll();
+        log.info("found [{}] cars", result.size());
+
+        log.debug("results: {}", result);
+
+        return result;
+    }
 
 }

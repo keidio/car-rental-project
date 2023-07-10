@@ -15,13 +15,23 @@ import java.util.List;
 @RequestMapping("/api")
 public class CarController {
     private final CarService carService;
+    private final CarMapper carMapper;
 
 
-    public CarController(CarService carService, CarMapper carMapper) {
+    public CarController(CarService carService, CarMapper carMapper, CarMapper carMapper1) {
         this.carService = carService;
+        this.carMapper = carMapper1;
     }
 
+    @GetMapping("/cars")
+    List<CarDto> getAllCars(){
+        log.info("all clients endpoint");
+        var cars = carService.getAllCars();
 
+        return cars.stream()
+                .map(car -> carMapper.fromEntityToDto(car))
+                .toList();
 
+    }
 
 }
