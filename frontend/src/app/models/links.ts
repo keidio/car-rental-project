@@ -8,3 +8,4 @@ export const createClientUrl =`${serverUrl}/api/clients`
 export const homePageUrl = ''
 export const clientsPageUrl = 'clients'
 export const notFoundPageUrl = '**'
+export const carsPageUrl='cars'
