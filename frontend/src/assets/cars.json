@@ -6,7 +6,7 @@
     "productionYear":"2021-12",
     "color":"SILVER",
     "available":true,
-    "priceList":{"pricePerDayInEuroCents":5000}
+    "priceList":5000
   },
   {
     "id":2,
@@ -15,6 +15,6 @@
     "productionYear":"2022-07",
     "color":"BLACK",
     "available":true,
-    "priceList":{"pricePerDayInEuroCents":6500}
+    "priceList":6500
   }
 ]
