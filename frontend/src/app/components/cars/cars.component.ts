@@ -3,6 +3,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
 import {CarService} from "../../services/car.service";
+import {Car} from "../../models/car";
 
 export interface UserData {
   id: string;
@@ -53,6 +54,7 @@ const NAMES: string[] = [
   export class CarsComponent implements AfterViewInit {
   displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
   dataSource: MatTableDataSource<UserData>;
+  cars!: Array<Car>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -70,6 +72,11 @@ const NAMES: string[] = [
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.carService.getAllCars()
+      .subscribe(cars => {
+        this.cars=cars;
+        console.log(`results: ${JSON.stringify(cars, null, 2)}`);
+      });
   }
 
   applyFilter(event: Event) {

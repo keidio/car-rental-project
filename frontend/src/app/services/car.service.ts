@@ -12,7 +12,7 @@ export class CarService {
     private http: HttpClient
   ) { }
 
-  getAllClients(): Observable<Array<Car>>{
+  getAllCars(): Observable<Array<Car>>{
     return this.http.get<Array<Car>>('assets/cars.json')
   }
 }
