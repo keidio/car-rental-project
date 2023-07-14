@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Car} from "../models/car";
+import {Car} from "../../models/car";
+import {allCarsUrl} from "../../models/links";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,6 @@ export class CarService {
   ) { }
 
   getAllCars(): Observable<Array<Car>>{
-    return this.http.get<Array<Car>>('assets/cars.json')
+    return this.http.get<Array<Car>>(allCarsUrl)
   }
 }
