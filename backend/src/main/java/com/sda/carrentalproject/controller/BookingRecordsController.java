@@ -1,6 +1,7 @@
 package com.sda.carrentalproject.controller;
 
-import com.sda.carrentalproject.dto.BookingRecordsDto;
+import com.sda.carrentalproject.dto.BookingRecordDto;
+import com.sda.carrentalproject.mapper.BookingRecordMapper;
 import com.sda.carrentalproject.service.BookingRecordService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,13 +17,20 @@ import java.util.List;
 public class BookingRecordsController {
 
     private final BookingRecordService bookingRecordService;
+    private final BookingRecordMapper bookingRecordMapper;
 
-    public BookingRecordsController(BookingRecordService bookingRecordService) {
+    public BookingRecordsController(BookingRecordService bookingRecordService, BookingRecordMapper bookingRecordMapper) {
         this.bookingRecordService = bookingRecordService;
+        this.bookingRecordMapper = bookingRecordMapper;
     }
 
     @GetMapping("/booking-records")
-    public List<BookingRecordsDto> allBookingRecords(){
-        return Collections.emptyList();
+    public List<BookingRecordDto> allBookingRecords(){
+        log.info("Getting all booking records");
+
+        return bookingRecordService.findAllBookingRecords()
+                .stream()
+                .map(bookingRecord -> bookingRecordMapper.fromEntityToDto(bookingRecord))
+                .toList();
     }
 }
