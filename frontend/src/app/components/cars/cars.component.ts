@@ -4,6 +4,7 @@ import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
 import {Car} from "../../models/car";
 import {CarService} from "../../services/car/car.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 
 @Component({
@@ -19,6 +20,15 @@ import {CarService} from "../../services/car/car.service";
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
+  carForm= new FormGroup({
+    model: new FormControl(''),
+    brand: new FormControl(''),
+    productionYear: new FormControl(''),
+    color: new FormControl(''),
+    available: new FormControl(''),
+    price: new FormControl('')
+  });
 
   constructor(
     private carService: CarService

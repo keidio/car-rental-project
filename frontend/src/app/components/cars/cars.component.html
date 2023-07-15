@@ -59,3 +59,31 @@
 
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
 </div>
+
+<div>
+  <form [formGroup]="carForm">
+    <label for="model">Model:</label>
+    <input formControlName="model" type="text" id="model">
+
+    <label for="brand">Brand:</label>
+    <input formControlName="brand" type="text" id="brand">
+
+    <label for="productionYear">Production year:</label>
+    <input formControlName="productionYear" type="text" id="productionYear">
+
+    <label for="color">Color:</label>
+    <input formControlName="color" type="text" id="color">
+
+    <label for="available">Available:</label>
+    <input formControlName="available" type="text" id="available">
+
+    <label for="price">Price:</label>
+    <input formControlName="price" type="text" id="price">
+
+
+    <button type="submit" mat-flat-button color="warn">Submit</button>
+  </form>
+
+  <p>Form value: {{ carForm.value | json }}</p>
+
+</div>

@@ -7,3 +7,10 @@ export interface Car{
   available: boolean;
   price: number;
 }
+
+export enum Color{
+  BLACK= 'BLACK',
+  BLUE='BLUE',
+  PINK='PINK',
+  SILVER='SILVER'
+}
