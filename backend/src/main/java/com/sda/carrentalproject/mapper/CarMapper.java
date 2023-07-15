@@ -3,7 +3,9 @@ package com.sda.carrentalproject.mapper;
 import com.sda.carrentalproject.domain.Car;
 import com.sda.carrentalproject.domain.PriceList;
 import com.sda.carrentalproject.dto.CarDto;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CarMapper implements Mapper<Car, CarDto> {
     @Override
     public CarDto fromEntityToDto(Car entity) {
