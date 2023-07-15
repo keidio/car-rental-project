@@ -4,7 +4,7 @@ import lombok.Builder;
 import java.time.LocalDate;
 
 @Builder
-public record BookingRecordsDto(
+public record BookingRecordDto(
         Long id,
         CarDto bookedCar,
         ClientDto client,
