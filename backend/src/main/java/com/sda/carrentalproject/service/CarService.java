@@ -24,4 +24,22 @@ public class CarService {
                 })
                 .orElseThrow(() ->  new WrongCarIdException("No car with given in: [%s]".formatted(id)));
     }
+
+    public Car saveCar(Car carToBook) {
+        log.info("Trying to save new car: [{}]", carToBook);
+
+        return carRepository.save(carToBook);
+    }
+
+    public Car findAvailableCarById(long id) {
+        log.info("Trying to find available car with given id [{}]", id);
+
+        return carRepository.findByIdAndAvailableTrue(id)
+                .map(car -> {
+                    log.info("Found available car: [{}]", car);
+                    return car;
+                })
+                .orElseThrow(() -> new WrongCarIdException("Car with given id: [%s] is unavailable".formatted(id)));
+
+    }
 }

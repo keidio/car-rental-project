@@ -5,6 +5,7 @@ import com.sda.carrentalproject.domain.Car;
 import com.sda.carrentalproject.domain.Client;
 import com.sda.carrentalproject.dto.CarBookingRequestDto;
 import com.sda.carrentalproject.exception.PeriodCalculationException;
+import com.sda.carrentalproject.exception.WrongCarIdException;
 import com.sda.carrentalproject.repository.BookingRecordRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -46,17 +47,27 @@ public class BookingRecordService {
         Client currentClient = clientService.findClientById(bookingRequestDto.clientId());
 
         //find a car based on given id
-        Car carToBook = carService.findCarById(bookingRequestDto.carToBookId());
+        Car carToBook = carService.findAvailableCarById(bookingRequestDto.carToBookId());
 
         //calculate full booking price
-       long bookingPriceInEuroCents = calculateBookingPrice(bookingRequestDto, carToBook);
+        long bookingPriceInEuroCents = calculateBookingPrice(bookingRequestDto, carToBook);
 
         //save record
+        BookingRecord newRecordToSave = BookingRecord.builder()
+                .bookedCar(carToBook)
+                .client(currentClient)
+                .startDate(bookingRequestDto.startDate())
+                .endDate(bookingRequestDto.endDate())
+                .fullPriceInEuroCents(bookingPriceInEuroCents)
+                .build();
 
-        //remainder to fix it
-        throw new RuntimeException("Not implemented");
-        //return null;
+        carToBook.setAvailable(false);
+        carService.saveCar(carToBook);
 
+        BookingRecord saved = bookingRecordRepository.save(newRecordToSave);
+        log.info("Created booking record: [{}]", saved);
+
+        return saved;
     }
 
     public long calculateBookingPrice (CarBookingRequestDto bookingRequestDto, Car carToBook) {
