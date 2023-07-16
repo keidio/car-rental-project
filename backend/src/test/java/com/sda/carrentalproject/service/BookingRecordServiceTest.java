@@ -37,21 +37,23 @@ class BookingRecordServiceTest {
     @Test
     void calculateBookingPriceWithNegativePeriod(){
         //given
-        CarBookingRequestDto bookingRequestFOrTwoDays = new CarBookingRequestDto(0L, 0L, LocalDate.now(), LocalDate.now().minusDays(2));
+        CarBookingRequestDto bookingRequestForTwoDays = new CarBookingRequestDto(0L, 0L, LocalDate.now(), LocalDate.now().minusDays(2));
         Car carToBook = Car.builder()
                 .priceList(new PriceList(15_000))
                 .build();
 
 
         //then
-        Assertions.assertThrows(PeriodCalculationException.class, () -> service.calculateBookingPrice(bookingRequestFOrTwoDays, carToBook));
+        PeriodCalculationException exc = Assertions.assertThrows(PeriodCalculationException.class, () -> service.calculateBookingPrice(bookingRequestForTwoDays, carToBook));
+
+        Assertions.assertEquals("End date is before starting date", exc.getMessage());
     }
 
     @Test
     void calculateBookingPriceForTooShortPeriod(){
 
         //given
-        CarBookingRequestDto bookingRequestDTOForZeroDays =
+        CarBookingRequestDto bookingRequestDtoForZeroDays =
                 new CarBookingRequestDto(0L, 0L, LocalDate.now(), LocalDate.now());
 
         Car carToBook = Car.builder()
@@ -59,6 +61,8 @@ class BookingRecordServiceTest {
                 .build();
 
         //then
-        Assertions.assertThrows(PeriodCalculationException.class, () -> service.calculateBookingPrice(bookingRequestDTOForZeroDays, carToBook));
+        PeriodCalculationException exc = Assertions.assertThrows(PeriodCalculationException.class, () -> service.calculateBookingPrice(bookingRequestDtoForZeroDays, carToBook));
+
+        Assertions.assertEquals("Booking duration is too low", exc.getMessage());
     }
 }
