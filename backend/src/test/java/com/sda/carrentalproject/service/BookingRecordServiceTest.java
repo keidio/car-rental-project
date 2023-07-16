@@ -27,9 +27,8 @@ class BookingRecordServiceTest {
                 .priceList(new PriceList(15_000))
                 .build();
 
-        long calculatedPriceInEuroCents = service.calculateBookingPrice(bookingRequestFOrTwoDays, carToBook);
-
         //when
+        long calculatedPriceInEuroCents = service.calculateBookingPrice(bookingRequestFOrTwoDays, carToBook);
         long expectedPriceInEuroCents = 2*15_000;
         //then
         Assertions.assertEquals(expectedPriceInEuroCents, calculatedPriceInEuroCents);
