@@ -42,8 +42,23 @@ class BookingRecordServiceTest {
                 .priceList(new PriceList(15_000))
                 .build();
 
-        //TODO:Check the message
+
         //then
         Assertions.assertThrows(PeriodCalculationException.class, () -> service.calculateBookingPrice(bookingRequestFOrTwoDays, carToBook));
+    }
+
+    @Test
+    void calculateBookingPriceForTooShortPeriod(){
+
+        //given
+        CarBookingRequestDto bookingRequestDTOForZeroDays =
+                new CarBookingRequestDto(0L, 0L, LocalDate.now(), LocalDate.now());
+
+        Car carToBook = Car.builder()
+                .priceList(new PriceList(15_000))
+                .build();
+
+        //then
+        Assertions.assertThrows(PeriodCalculationException.class, () -> service.calculateBookingPrice(bookingRequestDTOForZeroDays, carToBook));
     }
 }
