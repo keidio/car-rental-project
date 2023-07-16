@@ -7,4 +7,5 @@ export const createClientUrl =`${serverUrl}/api/clients`
 //local links
 export const homePageUrl = ''
 export const clientsPageUrl = 'clients'
+export const loginPageUrl ='login'
 export const notFoundPageUrl = '**'
