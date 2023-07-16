@@ -22,6 +22,8 @@ export class LoginService {
   }
 
   login(userLogin: string, pass: string): Observable<boolean> {
+    // TODO: delete after tests
+    console.log(`userLogin: ${userLogin}, password: ${pass}`)
     return of(true)
       .pipe(
         delay(2000),
