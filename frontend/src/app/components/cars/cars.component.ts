@@ -23,12 +23,12 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   @ViewChild(MatSort) sort!: MatSort;
 
   carForm= new FormGroup({
-    model: new FormControl('', Validators.required),
-    brand: new FormControl('', Validators.required),
-    productionYear: new FormControl('', Validators.required),
+    brand: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    model: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    productionYear: new FormControl('YYYY-MM', [Validators.required, Validators.minLength(7)] ),
     color: new FormControl('', Validators.required),
     available: new FormControl('', Validators.required),
-    price: new FormControl('', Validators.required)
+    price: new FormControl('', [Validators.required, Validators.minLength(4)])
   });
 
   constructor(
@@ -58,6 +58,10 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  onSubmit() {
+    console.log(`data to send: ${JSON.stringify(this.carForm.value, null, 2)}`);
   }
 }
 

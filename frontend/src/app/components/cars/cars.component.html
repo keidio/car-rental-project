@@ -61,12 +61,12 @@
 </div>
 
 <div>
-  <form [formGroup]="carForm">
-    <label for="model">Model:</label>
-    <input formControlName="model" type="text" id="model">
-
+  <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
     <label for="brand">Brand:</label>
     <input formControlName="brand" type="text" id="brand">
+
+    <label for="model">Model:</label>
+    <input formControlName="model" type="text" id="model">
 
     <label for="productionYear">Production year:</label>
     <input formControlName="productionYear" type="text" id="productionYear">
