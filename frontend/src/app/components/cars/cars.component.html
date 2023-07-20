@@ -84,7 +84,7 @@
     <input formControlName="price" type="text" id="price">
 
     <br>
-    <button type="submit" mat-flat-button color="warn">Submit</button>
+    <button [disabled]="!carForm.valid" type="submit" mat-flat-button color="warn">Submit</button>
   </form>
 
   <p>Form value: {{ carForm.value | json }}</p>
