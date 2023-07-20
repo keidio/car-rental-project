@@ -76,10 +76,9 @@
       <option *ngFor="let color of eColor | keyvalue" [ngValue]="color.value">{{color.value}}</option>
     </select>
 
-    <p>Mark availability:</p>
+    <label for="available">Mark availability:</label>
     <input formControlName="available" type="radio" id="available" value="true">Available<br>
     <input formControlName="available" type="radio" id="unavailable" value="false">Unavailable<br>
-
 
     <label for="price">Price:</label>
     <input formControlName="price" type="text" id="price">
