@@ -72,15 +72,19 @@
     <input formControlName="productionYear" type="text" id="productionYear">
 
     <label for="color">Color:</label>
-    <input formControlName="color" type="text" id="color">
+    <select formControlName="color" id="color">
+      <option *ngFor="let color of eColor | keyvalue" [ngValue]="color.value">{{color.value}}</option>
+    </select>
 
-    <label for="available">Available:</label>
-    <input formControlName="available" type="text" id="available">
+    <p>Mark availability:</p>
+    <input formControlName="available" type="radio" id="available" value="true">Available<br>
+    <input formControlName="available" type="radio" id="unavailable" value="false">Unavailable<br>
+
 
     <label for="price">Price:</label>
     <input formControlName="price" type="text" id="price">
 
-
+    <br>
     <button type="submit" mat-flat-button color="warn">Submit</button>
   </form>
 

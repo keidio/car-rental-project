@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
-import {Car} from "../../models/car";
+import {Car, Color} from "../../models/car";
 import {CarService} from "../../services/car/car.service";
 import {FormControl, FormGroup} from "@angular/forms";
 
@@ -17,6 +17,7 @@ import {FormControl, FormGroup} from "@angular/forms";
   displayedColumns: Array<string> = ['id', 'brand', 'model', 'productionYear', 'color', 'available', 'price'];
   dataSource: MatTableDataSource<Car>;
   cars!: Array<Car>;
+  eColor = Color;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
