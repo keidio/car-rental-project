@@ -6,7 +6,6 @@ import {Car, Color} from "../../models/car";
 import {CarService} from "../../services/car/car.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
-
 @Component({
   selector: 'app-cars',
   templateUrl: './cars.component.html',
@@ -63,6 +62,31 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   onSubmit() {
     console.log(`data to send: ${JSON.stringify(this.carForm.value, null, 2)}`);
   }
+
+  get brand() {
+    return this.carForm.controls.brand;
+  }
+
+  get model() {
+    return this.carForm.controls.model;
+  }
+
+  get productionYear(){
+    return this.carForm.controls.productionYear;
+  }
+
+  get color(){
+    return this.carForm.controls.color;
+  }
+
+  get available(){
+    return this.carForm.controls.available
+  }
+
+  get price(){
+    return this.carForm.controls.price
+  }
+
 }
 
 

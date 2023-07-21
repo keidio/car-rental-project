@@ -63,25 +63,47 @@
 <div>
   <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
     <label for="brand">Brand:</label>
-    <input [formControl]="carForm.controls.brand" type="text" id="brand">
+    <input [formControl]="brand" type="text" id="brand">
+    <div *ngIf="brand.invalid">
+      <div *ngIf="brand.errors?.['required']">Brand field is required</div>
+      <div *ngIf="brand.errors?.['minlength']">Minimum length of field is 3</div>
+    </div>
 
     <label for="model">Model:</label>
-    <input [formControl]="carForm.controls.model"  type="text" id="model">
+    <input [formControl]="model"  type="text" id="model">
+    <div *ngIf="model.invalid">
+      <div *ngIf="model.errors?.['required']">Model field is required</div>
+      <div *ngIf="model.errors?.['minlength']">Minimum length of field is 2</div>
+    </div>
 
     <label for="productionYear">Production year:</label>
-    <input [formControl]="carForm.controls.productionYear" type="text" id="productionYear">
+    <input [formControl]="productionYear" type="text" id="productionYear">
+    <div *ngIf="productionYear.invalid">
+      <div *ngIf="productionYear.errors?.['required']">Production year field is required</div>
+      <div *ngIf="productionYear.errors?.['minlength']">Minimum length of field is 7</div>
+    </div>
 
     <label for="color">Color:</label>
-    <select [formControl]="carForm.controls.color" id="color">
+    <select [formControl]="color" id="color">
       <option *ngFor="let color of eColor | keyvalue" [ngValue]="color.value">{{color.value}}</option>
     </select>
+    <div *ngIf="color.invalid">
+      <div *ngIf="color.errors?.['required']">Color is required</div>
+    </div>
 
     <label for="available">Mark availability:</label>
-    <input [formControl]="carForm.controls.available" type="radio" id="available" value="true">Available<br>
-    <input [formControl]="carForm.controls.available" type="radio" id="unavailable" value="false">Unavailable<br>
+    <input [formControl]="available" type="radio" id="available" value="true">Available<br>
+    <input [formControl]="available" type="radio" id="unavailable" value="false">Unavailable<br>
+    <div *ngIf="available.invalid">
+      <div *ngIf="available.errors?.['required']">Availability is required</div>
+    </div>
 
     <label for="price">Price:</label>
-    <input [formControl]="carForm.controls.price"  type="text" id="price">
+    <input [formControl]="price"  type="text" id="price">
+    <div *ngIf="price.invalid">
+      <div *ngIf="price.errors?.['required']">Price field is required</div>
+      <div *ngIf="price.errors?.['minlength']">Minimum length of field is 4</div>
+    </div>
 
     <br>
     <button [disabled]="!carForm.valid" type="submit" mat-flat-button color="warn">Submit</button>
