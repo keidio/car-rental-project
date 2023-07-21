@@ -1,15 +1,17 @@
 package com.sda.carrentalproject.controller;
 
+import com.sda.carrentalproject.domain.Car;
 import com.sda.carrentalproject.dto.CarDto;
 import com.sda.carrentalproject.mapper.CarMapper;
 import com.sda.carrentalproject.service.CarService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @Slf4j
@@ -35,6 +37,18 @@ public class CarController {
                 .map(car -> carMapper.fromEntityToDto(car))
                 .toList();
 
+    }
+
+    @PostMapping("/cars")
+    ResponseEntity<CarDto> createNewCar(@RequestBody CarDto carToSave, UriComponentsBuilder ucb) {
+        log.info("trying to save new car: [{}]", carToSave);
+        Car createdCar = carService.saveCar(carMapper.fromDtoToEntity(carToSave));
+
+        URI path = ucb.path("/apu/car/{id}")
+                .buildAndExpand(Map.of("id", createdCar.getId()))
+                .toUri();
+
+        return ResponseEntity.created(path).body(carMapper.fromEntityToDto(createdCar));
     }
 
 }

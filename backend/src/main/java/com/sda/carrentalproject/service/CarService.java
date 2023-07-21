@@ -27,4 +27,12 @@ public class CarService {
         return result;
     }
 
+    public Car saveCar(Car carEntity) {
+        log.info("creating new car: [{}]", carEntity);
+
+        var result = carRepository.save(carEntity);
+        log.info("saved car: [{}]", result);
+
+        return result;
+    }
 }
