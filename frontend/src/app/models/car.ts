@@ -5,7 +5,7 @@ export interface Car{
   productionYear: string;
   color: string;
   available: boolean;
-  price: number;
+  price: string;
 }
 
 export enum Color{

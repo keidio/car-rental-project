@@ -26,7 +26,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
     model: new FormControl('', [Validators.required, Validators.minLength(2)]),
     productionYear: new FormControl('YYYY-MM', [Validators.required, Validators.minLength(7)] ),
     color: new FormControl('', Validators.required),
-    available: new FormControl('', Validators.required),
+    available: new FormControl(false, Validators.required),
     price: new FormControl('', [Validators.required, Validators.minLength(4)])
   });
 
@@ -42,9 +42,13 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.fetchCars();
+  }
+
+  private fetchCars() {
     this.carService.getAllCars()
       .subscribe(cars => {
-        this.cars=cars;
+        this.cars = cars;
         this.dataSource.data = this.cars;
         console.log(`results: ${JSON.stringify(cars, null, 2)}`);
       });
@@ -61,6 +65,13 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 
   onSubmit() {
     console.log(`data to send: ${JSON.stringify(this.carForm.value, null, 2)}`);
+
+    this.carService.createCar(this.carForm.value as Car)
+      .subscribe(value => {
+        this.carForm.reset();
+        this.fetchCars();
+      });
+
   }
 
   get brand() {
@@ -86,6 +97,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   get price(){
     return this.carForm.controls.price
   }
+
+
 
 }
 
