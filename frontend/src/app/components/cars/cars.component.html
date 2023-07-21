@@ -63,25 +63,25 @@
 <div>
   <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
     <label for="brand">Brand:</label>
-    <input formControlName="brand" type="text" id="brand">
+    <input [formControl]="carForm.controls.brand" type="text" id="brand">
 
     <label for="model">Model:</label>
-    <input formControlName="model" type="text" id="model">
+    <input [formControl]="carForm.controls.model"  type="text" id="model">
 
     <label for="productionYear">Production year:</label>
-    <input formControlName="productionYear" type="text" id="productionYear">
+    <input [formControl]="carForm.controls.productionYear" type="text" id="productionYear">
 
     <label for="color">Color:</label>
-    <select formControlName="color" id="color">
+    <select [formControl]="carForm.controls.color" id="color">
       <option *ngFor="let color of eColor | keyvalue" [ngValue]="color.value">{{color.value}}</option>
     </select>
 
     <label for="available">Mark availability:</label>
-    <input formControlName="available" type="radio" id="available" value="true">Available<br>
-    <input formControlName="available" type="radio" id="unavailable" value="false">Unavailable<br>
+    <input [formControl]="carForm.controls.available" type="radio" id="available" value="true">Available<br>
+    <input [formControl]="carForm.controls.available" type="radio" id="unavailable" value="false">Unavailable<br>
 
     <label for="price">Price:</label>
-    <input formControlName="price" type="text" id="price">
+    <input [formControl]="carForm.controls.price"  type="text" id="price">
 
     <br>
     <button [disabled]="!carForm.valid" type="submit" mat-flat-button color="warn">Submit</button>
