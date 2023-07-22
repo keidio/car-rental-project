@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class PriceList {
      long pricePerDayInEuroCents;
 

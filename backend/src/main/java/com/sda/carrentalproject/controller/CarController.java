@@ -42,7 +42,7 @@ public class CarController {
     @PostMapping("/cars")
     ResponseEntity<CarDto> createNewCar(@RequestBody CarDto carToSave, UriComponentsBuilder ucb) {
         log.info("trying to save new car: [{}]", carToSave);
-        Car createdCar = carService.saveCar(carMapper.fromDtoToEntity(carToSave));
+        Car createdCar = carService.saveNewCar(carMapper.fromDtoToEntity(carToSave));
 
         URI path = ucb.path("/apu/car/{id}")
                 .buildAndExpand(Map.of("id", createdCar.getId()))
