@@ -99,10 +99,10 @@
     </div>
 
     <label for="price">Price:</label>
-    <input [formControl]="price"  type="text" id="price">
-    <div class="alert" *ngIf="price.invalid && (price.touched || price.dirty)">
-      <div *ngIf="price.errors?.['required']">Price field is required</div>
-      <div *ngIf="price.errors?.['minlength']">Minimum length of field is 4</div>
+    <input [formControl]="pricePerDayInEuroCents"  type="text" id="price">
+    <div class="alert" *ngIf="pricePerDayInEuroCents.invalid && (pricePerDayInEuroCents.touched || pricePerDayInEuroCents.dirty)">
+      <div *ngIf="pricePerDayInEuroCents.errors?.['required']">Price field is required</div>
+      <div *ngIf="pricePerDayInEuroCents.errors?.['minlength']">Minimum length of field is 4</div>
     </div>
 
     <br>

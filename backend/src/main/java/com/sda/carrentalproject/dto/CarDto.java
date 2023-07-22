@@ -13,6 +13,6 @@ public record CarDto(Long id,
                      YearMonth productionYear,
                      Color color,
                      Boolean available,
-                     PriceList priceList
+                     long pricePerDayInEuroCents
                      )  {
 }

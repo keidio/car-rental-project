@@ -27,7 +27,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
     productionYear: new FormControl('YYYY-MM', [Validators.required, Validators.minLength(7)] ),
     color: new FormControl('', Validators.required),
     available: new FormControl(false, Validators.required),
-    price: new FormControl('', [Validators.required, Validators.minLength(4)])
+    pricePerDayInEuroCents: new FormControl('', [Validators.required, Validators.minLength(4)])
   });
 
   constructor(
@@ -94,8 +94,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
     return this.carForm.controls.available
   }
 
-  get price(){
-    return this.carForm.controls.price
+  get pricePerDayInEuroCents(){
+    return this.carForm.controls.pricePerDayInEuroCents
   }
 
 

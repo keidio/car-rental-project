@@ -34,7 +34,7 @@ public class Car {
 
     private boolean available;
 
-    @Embedded
+    //@Embedded
     private PriceList priceList;
 
 }
