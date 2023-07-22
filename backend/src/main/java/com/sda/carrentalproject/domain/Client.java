@@ -1,6 +1,10 @@
 package com.sda.carrentalproject.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,12 +26,26 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min = 2)
+    @Column(nullable = false)
     private String name;
 
+    @NotNull
+    @Size(min = 2)
+    @Column(nullable = false)
     private String surname;
 
+    @NotNull
+    @Size(min = 7)
+    @Column(nullable = false)
     private String phone;
 
+
+    // TODO: validate uniqueness on other that h2 database
+    @NotNull
+    @Email
+    @Column(nullable = false, unique = true)
     private String email;
 
     private String address;
@@ -36,6 +54,7 @@ public class Client {
 
     private LocalDateTime registrationDateTime;
 
+    @Past
     private LocalDate dateOfBirth;
 
     @PrePersist

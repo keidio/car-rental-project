@@ -8,7 +8,6 @@ import lombok.Builder;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-// TODO: add nulls and not nulls annotations
 @Builder
 public record ClientDto( Long id,
                          @NotNull

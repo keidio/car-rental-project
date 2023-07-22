@@ -28,7 +28,7 @@ public class ClientDataInitializer implements CommandLineRunner {
 
         Client client = Client.builder()
                 .name("Keidi")
-                .surname("O")
+                .surname("Op")
                 .phone("555-657-584")
                 .email("keidi@keidi.com")
                 .address("Estonia")
@@ -36,6 +36,7 @@ public class ClientDataInitializer implements CommandLineRunner {
                 .dateOfBirth(LocalDate.of(1990, Month.AUGUST, 8))
                 .build();
 
+        clientRepository.save(client);
         clientRepository.save(client);
     }
 }
