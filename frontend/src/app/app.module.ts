@@ -19,6 +19,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {clientsPageUrl, homePageUrl, loginPageUrl, notFoundPageUrl} from "./models/links";
 import {ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './components/login/login.component';
+import {authGuard} from "./services/login-service/login.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,7 @@ import { LoginComponent } from './components/login/login.component';
     RouterOutlet,
     RouterModule.forRoot([
       {path: homePageUrl, component: HomePageComponent},
-      {path: clientsPageUrl, component: ClientsComponent},
+      {path: clientsPageUrl, component: ClientsComponent, canActivate: [authGuard]},
       {path: loginPageUrl, component: LoginComponent},
       {path: notFoundPageUrl, component:NotFoundPageComponent}
     ]),

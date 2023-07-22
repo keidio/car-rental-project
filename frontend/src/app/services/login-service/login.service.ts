@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {delay, Observable, of, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {adminRole, defaultUserLogin, defaultUserName, defaultUserSurname, emptyRole} from "../../models/authorization";
+import {Router} from "@angular/router";
+import {loginPageUrl} from "../../models/links";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +21,10 @@ export class LoginService {
   constructor(
     private http: HttpClient
   ) {
+  }
+
+  isAdmin(): boolean{
+    return this.userRole === adminRole;
   }
 
   login(userLogin: string, pass: string): Observable<boolean> {
@@ -45,4 +51,14 @@ export class LoginService {
     this.userLogin = defaultUserLogin;
   }
 
+}
+
+export const authGuard = () => {
+  const loginService = inject(LoginService);
+  const router: Router = inject(Router)
+  if(loginService.isAdmin()){
+    return true;
+  }
+
+  return router.createUrlTree([loginPageUrl]);
 }
