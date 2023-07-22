@@ -1,0 +1,115 @@
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Audi" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+
+    <!-- Brand Column -->
+    <ng-container matColumnDef="brand">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Brand </th>
+      <td mat-cell *matCellDef="let row"> {{row.brand}} </td>
+    </ng-container>
+
+    <!-- Model Column -->
+    <ng-container matColumnDef="model">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Model </th>
+      <td mat-cell *matCellDef="let row"> {{row.model}} </td>
+    </ng-container>
+
+    <!-- Production year Column -->
+    <ng-container matColumnDef="productionYear">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Production Year </th>
+      <td mat-cell *matCellDef="let row"> {{row.productionYear}} </td>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="color">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Color </th>
+      <td mat-cell *matCellDef="let row"> {{row.color}} </td>
+    </ng-container>
+
+    <!-- Available Column -->
+    <ng-container matColumnDef="available">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Available </th>
+      <td mat-cell *matCellDef="let row"> {{row.available}} </td>
+    </ng-container>
+
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+      <td mat-cell *matCellDef="let row"> {{row.price}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+
+<div>
+  <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+    <label for="brand">Brand:</label>
+    <input [formControl]="brand" type="text" id="brand">
+    <div class="alert" *ngIf="brand.invalid && (brand.touched || brand.dirty)">
+      <div *ngIf="brand.errors?.['required']">Brand field is required</div>
+      <div *ngIf="brand.errors?.['minlength']">Minimum length of field is 3</div>
+    </div>
+
+    <label for="model">Model:</label>
+    <input [formControl]="model"  type="text" id="model">
+    <div class="alert"  *ngIf="model.invalid && (model.touched || model.dirty)">
+      <div *ngIf="model.errors?.['required']">Model field is required</div>
+      <div *ngIf="model.errors?.['minlength']">Minimum length of field is 2</div>
+    </div>
+
+    <label for="productionYear">Production year:</label>
+    <input [formControl]="productionYear" type="text" id="productionYear">
+    <div class="alert" *ngIf="productionYear.invalid && (productionYear.touched || productionYear.dirty)">
+      <div *ngIf="productionYear.errors?.['required']">Production year field is required</div>
+      <div *ngIf="productionYear.errors?.['minlength']">Minimum length of field is 7</div>
+    </div>
+
+    <label for="color">Color:</label>
+    <select [formControl]="color" id="color">
+      <option *ngFor="let color of eColor | keyvalue" [ngValue]="color.value">{{color.value}}</option>
+    </select>
+    <div class="alert" *ngIf="color.invalid && color.touched">
+      <div *ngIf="color.errors?.['required']">Color is required</div>
+    </div>
+
+    <label for="available">Mark availability:</label>
+    <input [formControl]="available" type="radio" id="available" value="true">Available<br>
+    <input [formControl]="available" type="radio" id="unavailable" value="false">Unavailable<br>
+    <div class="alert" *ngIf="available.invalid && available.touched">
+      <div *ngIf="available.errors?.['required']">Availability is required</div>
+    </div>
+
+    <label for="price">Price:</label>
+    <input [formControl]="pricePerDayInEuroCents"  type="text" id="price">
+    <div class="alert" *ngIf="pricePerDayInEuroCents.invalid && (pricePerDayInEuroCents.touched || pricePerDayInEuroCents.dirty)">
+      <div *ngIf="pricePerDayInEuroCents.errors?.['required']">Price field is required</div>
+      <div *ngIf="pricePerDayInEuroCents.errors?.['minlength']">Minimum length of field is 4</div>
+    </div>
+
+    <br>
+    <button [disabled]="!carForm.valid" type="submit" mat-flat-button color="warn">Submit</button>
+    <button type="reset" mat-flat-button color="warn">Reset</button>
+  </form>
+
+  <p>Form value: {{ carForm.value | json }}</p>
+  <p>Form status: {{carForm.status}}</p>
+</div>

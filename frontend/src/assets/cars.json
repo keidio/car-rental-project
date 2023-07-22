@@ -1,0 +1,20 @@
+[
+  {
+    "id":1,
+    "brand":"Skoda",
+    "model":"Octavia",
+    "productionYear":"2021-12",
+    "color":"SILVER",
+    "available":true,
+    "priceList":5000
+  },
+  {
+    "id":2,
+    "brand":"Audi",
+    "model":"A4",
+    "productionYear":"2022-07",
+    "color":"BLACK",
+    "available":true,
+    "priceList":6500
+  }
+]

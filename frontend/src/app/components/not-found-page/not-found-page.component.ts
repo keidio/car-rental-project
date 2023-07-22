@@ -7,7 +7,5 @@ import {homePageUrl, notFoundPageUrl} from "../../models/links";
   styleUrls: ['./not-found-page.component.css']
 })
 export class NotFoundPageComponent {
-
-  protected readonly notFoundPageUrl = notFoundPageUrl;
   protected readonly homePageUrl = homePageUrl;
 }

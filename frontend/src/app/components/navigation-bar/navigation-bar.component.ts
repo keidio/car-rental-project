@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {clientsPageUrl, homePageUrl, loginPageUrl} from "../../models/links";
+import {clientsPageUrl, homePageUrl} from "../../models/links";
 
 @Component({
   selector: 'app-navigation-bar',
@@ -10,5 +10,4 @@ export class NavigationBarComponent {
 
   protected readonly homePageUrl = homePageUrl;
   protected readonly clientsPageUrl = clientsPageUrl;
-  protected readonly loginPageUrl = loginPageUrl;
 }
