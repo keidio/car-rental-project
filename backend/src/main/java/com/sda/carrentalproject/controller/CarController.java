@@ -28,15 +28,17 @@ public class CarController {
         this.carMapper = carMapper1;
     }
 
-    @GetMapping("/cars")
-    List<CarDto> getAllCars(){
-        log.info("all cars endpoint");
-        var cars = carService.getAllCars();
 
-        return cars.stream()
+    // /cars?available=true
+    @GetMapping("/cars")
+    public List<CarDto> getAllCars(@RequestParam Map<String, String>queryParams){
+        log.info("all cars endpoint");
+        log.info("query params: {}",queryParams);
+
+        return carService.findCarsBasedOnQueryParameters(queryParams)
+                .stream()
                 .map(car -> carMapper.fromEntityToDto(car))
                 .toList();
-
     }
 
     @PostMapping("/cars")

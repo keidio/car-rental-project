@@ -7,10 +7,19 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Slf4j
 public class CarService {
+
+    private static final String availableKey = "available";
+
+    private static final String colorKey = "color";
+
+    private static final String brandKey = "brand";
+
+    private static final String modelKey = "model";
 
     private final CarRepository carRepository;
 
@@ -67,11 +76,24 @@ public class CarService {
 
     public List<Car> findALlCarsAvailableForBooking(){
         log.info("trying to find all cars available for booking");
-        var availableCars = carRepository.findAllAndAvailableTrue();
+        var availableCars = carRepository.findAllByAvailableTrue();
 
-        log.info("number of abailable cars: [{}]", availableCars.size());
+        log.info("number of available cars: [{}]", availableCars.size());
         log.debug("available cars: {}", availableCars);
 
         return availableCars;
+    }
+
+    public List<Car> findCarsBasedOnQueryParameters(Map<String, String> queryParams) {
+        log.info("finding cars based on query parameters: [{}]", queryParams);
+
+        String availableValue = queryParams.getOrDefault(availableKey, "false");
+        boolean available= Boolean.parseBoolean(availableValue);
+        if (available) {
+            return findALlCarsAvailableForBooking();
+        } else {
+            return getAllCars();
+        }
+
     }
 }
