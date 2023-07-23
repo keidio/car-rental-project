@@ -19,7 +19,7 @@ import java.util.Map;
 @Slf4j
 @RequestMapping("/api")
 // TODO: make it safe
-@CrossOrigin("*")
+@CrossOrigin("${frontend.trusted-url}")
 public class CarController {
     private final CarService carService;
     private final CarMapper carMapper;

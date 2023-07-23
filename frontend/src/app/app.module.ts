@@ -21,6 +21,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './components/login/login.component';
 import {authGuard} from "./services/login-service/login.service";
 import {CarsComponent} from "./components/cars/cars.component";
+import {MatCardModule} from "@angular/material/card";
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,11 +48,12 @@ import {CarsComponent} from "./components/cars/cars.component";
       {path: clientsPageUrl, component: ClientsComponent, canActivate: [authGuard]},
       {path: loginPageUrl, component: LoginComponent},
       {path: carsPageUrl, component: CarsComponent},
-      {path: notFoundPageUrl, component:NotFoundPageComponent}
+      {path: notFoundPageUrl, component: NotFoundPageComponent}
     ]),
     MatIconModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
