@@ -26,16 +26,36 @@ public class CarDataInitializer implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         log.info("creating some cars");
-         Car car = Car.builder()
+         Car car1Available = Car.builder()
                  .brand("Skoda")
                  .model("Octavia")
                  .productionYear(YearMonth.of(2021, 12))
                  .color(Color.SILVER)
                  .available(true)
-                 .priceList(new PriceList(5000L))
+                 .priceList(new PriceList(50_000L))
                  .build();
 
-         carRepository.save(car);
+        Car car2Available = Car.builder()
+                .brand("Skoda")
+                .model("Superb")
+                .productionYear(YearMonth.of(2006, 9))
+                .color(Color.BLACK)
+                .available(true)
+                .priceList(new PriceList(59_000L))
+                .build();
+
+        Car car32Unavailable = Car.builder()
+                .brand("Ford")
+                .model("Focus")
+                .productionYear(YearMonth.of(2022, 5))
+                .color(Color.BLUE)
+                .available(false)
+                .priceList(new PriceList(10_000L))
+                .build();
+
+         carRepository.save(car1Available);
+         carRepository.save(car2Available);
+         carRepository.save(car32Unavailable);
 
     }
 }
