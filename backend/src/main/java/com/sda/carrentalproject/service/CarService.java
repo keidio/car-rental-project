@@ -76,7 +76,7 @@ public class CarService {
 
     public List<Car> findALlCarsAvailableForBooking(){
         log.info("trying to find all cars available for booking");
-        var availableCars = carRepository.findAllByAvailableTrue();
+        var availableCars = carRepository.findAllByAvailable(true);
 
         log.info("number of available cars: [{}]", availableCars.size());
         log.debug("available cars: {}", availableCars);
@@ -84,16 +84,30 @@ public class CarService {
         return availableCars;
     }
 
+    public List<Car> findRentedCars(){
+        log.info("trying to find rented cars");
+        var rentedCars = carRepository.findAllByAvailable(false);
+
+        log.info("number of rented cars: [{}]", rentedCars.size());
+        log.debug("rented cars: [{}}", rentedCars);
+
+        return rentedCars;
+    }
     public List<Car> findCarsBasedOnQueryParameters(Map<String, String> queryParams) {
         log.info("finding cars based on query parameters: [{}]", queryParams);
 
-        String availableValue = queryParams.getOrDefault(availableKey, "false");
-        boolean available= Boolean.parseBoolean(availableValue);
-        if (available) {
-            return findALlCarsAvailableForBooking();
+        List<Car> result;
+        if(!queryParams.containsKey(availableKey)){
+            result = getAllCars();
         } else {
-            return getAllCars();
+            boolean available = Boolean.parseBoolean(queryParams.get(availableKey));
+            if(available) {
+                result = findALlCarsAvailableForBooking();
+            } else {
+                result = findRentedCars();
+            }
         }
+         return result;
 
     }
 }
