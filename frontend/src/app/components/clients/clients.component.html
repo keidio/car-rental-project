@@ -111,10 +111,11 @@
     <label for="address">Address:</label>
     <input [formControl]="address" type="text" id="address">
 
-    <label for="hasDrivingLicence">Has driving licence:</label>
-    <input [formControl]="drivingLicence" type="text" id="hasDrivingLicence">
-    <div class="alert" *ngIf="drivingLicence.invalid && (drivingLicence.touched || drivingLicence.dirty)">
-      <div *ngIf="drivingLicence.errors?.['required']">Driving licence field is required</div>
+    <label for="hasDrivingLicence">Driving licence:</label>
+    <input [formControl]="drivingLicence" type="radio" id="hasDrivingLicence" value="true">Yes<br>
+    <input [formControl]="drivingLicence" type="radio"  id="!hasDrivingLicence" value="false">No<br>
+    <div class="alert" *ngIf="drivingLicence.invalid && drivingLicence.touched">
+      <div *ngIf="drivingLicence.errors?.['required']">Information about driving licence is required</div>
     </div>
 
     <label for="dateOfBirth">Date of birth:</label>
@@ -128,5 +129,7 @@
       <button type="reset" mat-flat-button color="warn">Reset</button>
     <!--TODO: add progress indicator-->
   </form>
+
+  <p>Form value: {{ clientForm.value | json }}</p>
 </div>
 </div>

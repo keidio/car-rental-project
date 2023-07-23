@@ -95,7 +95,7 @@
 
     <label for="available">Mark availability:</label>
     <input [formControl]="available" type="radio" id="available" value="true">Available<br>
-    <input [formControl]="available" type="radio" id="unavailable" value="false">Unavailable<br>
+    <input [formControl]="available" type="radio" id="!available" value="false">Unavailable<br>
     <div class="alert" *ngIf="available.invalid && available.touched">
       <div *ngIf="available.errors?.['required']">Availability is required</div>
     </div>
