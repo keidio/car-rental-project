@@ -1,3 +1,5 @@
+<div>
+  <h2>Rental cars</h2>
 <mat-form-field>
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Audi" #input>
@@ -112,4 +114,5 @@
 
   <p>Form value: {{ carForm.value | json }}</p>
   <p>Form status: {{carForm.status}}</p>
+</div>
 </div>
