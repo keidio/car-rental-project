@@ -28,7 +28,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
     address: new FormControl(''),
     hasDrivingLicence: new FormControl(false, Validators.required ),
     registrationDateTime: new FormControl(null),
-    dateOfBirth: new FormControl('YYYY-MM-DD', [Validators.required, Validators.minLength(10)])
+    dateOfBirth: new FormControl('', Validators.required)
   });
 
   constructor(

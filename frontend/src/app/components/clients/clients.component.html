@@ -119,10 +119,9 @@
     </div>
 
     <label for="dateOfBirth">Date of birth:</label>
-    <input [formControl]="dateOfBirth" type="text" id="dateOfBirth">
+    <input [formControl]="dateOfBirth" type="date" id="dateOfBirth">
     <div class="alert" *ngIf="dateOfBirth.invalid && (dateOfBirth.touched || dateOfBirth.dirty)">
       <div *ngIf="dateOfBirth.errors?.['required']">Date of birth field is required</div>
-      <div *ngIf="dateOfBirth.errors?.['minlength']">Minimum length of field is 10</div>
     </div>
 
       <button [disabled]="!clientForm.valid" type="submit" mat-flat-button color="warn">Submit</button>
