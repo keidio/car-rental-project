@@ -124,11 +124,17 @@
       <div *ngIf="dateOfBirth.errors?.['required']">Date of birth field is required</div>
     </div>
 
+    <div>
       <button [disabled]="!clientForm.valid" type="submit" mat-flat-button color="warn">Submit</button>
       <button type="reset" mat-flat-button color="warn">Reset</button>
+    </div>
+
+
+<!--    <div>-->
+<!--    <mat-progress-bar color="accent" mode="determinate" [value]="calculateFormProgress(clientForm)"></mat-progress-bar>-->
+<!--    </div>-->
     <!--TODO: add progress indicator-->
   </form>
-
   <p>Form value: {{ clientForm.value | json }}</p>
 </div>
 </div>

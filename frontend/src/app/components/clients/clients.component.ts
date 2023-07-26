@@ -17,6 +17,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<Client>;
   clients: Array<Client> = [];
 
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -104,6 +105,19 @@ export class ClientsComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+
+  /*calculateFormProgress(form: FormGroup): number {
+
+    const controlCount = Object.keys(form.controls).length;
+    let validCount = 0;
+
+    for( const [key, value] of Object.entries(form.controls)) {
+      if (value.valid) validCount++;
+    }
+
+    return validCount / controlCount * 100;
+  }*/
+
 }
 
 

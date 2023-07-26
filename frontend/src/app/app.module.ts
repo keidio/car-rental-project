@@ -22,6 +22,8 @@ import { LoginComponent } from './components/login/login.component';
 import {authGuard} from "./services/login-service/login.service";
 import {CarsComponent} from "./components/cars/cars.component";
 import {MatCardModule} from "@angular/material/card";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +55,8 @@ import {MatCardModule} from "@angular/material/card";
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

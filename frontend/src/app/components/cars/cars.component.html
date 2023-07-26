@@ -64,6 +64,7 @@
 
 <div>
   <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+    <h3>Add new car:</h3>
     <label for="brand">Brand:</label>
     <input [formControl]="brand" type="text" id="brand">
     <div class="alert" *ngIf="brand.invalid && (brand.touched || brand.dirty)">
@@ -107,9 +108,10 @@
       <div *ngIf="pricePerDayInEuroCents.errors?.['minlength']">Minimum length of field is 4</div>
     </div>
 
-    <br>
+    <div>
     <button [disabled]="!carForm.valid" type="submit" mat-flat-button color="warn">Submit</button>
     <button type="reset" mat-flat-button color="warn">Reset</button>
+    </div>
   </form>
 
   <p>Form value: {{ carForm.value | json }}</p>
@@ -131,8 +133,8 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button></button>
         <button mat-button>RENT</button>
+
       </mat-card-actions>
     </mat-card>
   </div>
