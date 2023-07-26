@@ -44,9 +44,7 @@ public class Car {
 
     private boolean available;
 
-    @NotNull
     @Column(nullable = false)
-    @Size(min = 4)
     private PriceList priceList;
 
 }
