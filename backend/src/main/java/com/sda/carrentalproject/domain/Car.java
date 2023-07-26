@@ -3,6 +3,9 @@ package com.sda.carrentalproject.domain;
 
 import com.sda.carrentalproject.domain.enumeration.Color;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,25 +19,34 @@ import java.time.YearMonth;
 @AllArgsConstructor
 @Entity
 @Table(name= "CARS")
-//TODO: homework implement on java and angular side
 public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min = 3)
+    @Column(nullable = false)
     private String brand;
 
+    @NotNull
+    @Size(min = 2)
+    @Column(nullable = false)
     private String model;
 
     private YearMonth productionYear;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Color color;
 
     private boolean available;
 
-    //@Embedded
+    @NotNull
+    @Column(nullable = false)
+    @Size(min = 4)
     private PriceList priceList;
 
 }
