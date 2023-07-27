@@ -23,6 +23,7 @@ import {authGuard} from "./services/login-service/login.service";
 import {CarsComponent} from "./components/cars/cars.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { BookingsComponent } from './components/bookings/bookings.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     HomePageComponent,
     NotFoundPageComponent,
     CarsComponent,
-    LoginComponent
+    LoginComponent,
+    BookingsComponent
   ],
   imports: [
     BrowserModule,
