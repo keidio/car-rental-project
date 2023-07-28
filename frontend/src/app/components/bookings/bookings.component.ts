@@ -10,7 +10,7 @@ import {MatSort} from "@angular/material/sort";
   templateUrl: './bookings.component.html',
   styleUrls: ['./bookings.component.css']
 })
-export class BookingsComponent implements OnInit{
+export class BookingsComponent implements OnInit, AfterViewInit{
   displayedColumns: string[] = ['id', 'bookedCar', 'client', 'startDate', 'endDate', 'fullPriceInEuroCents'];
   dataSource: MatTableDataSource<BookingRecord>;
   bookingRecords!: Array<BookingRecord>;
@@ -26,8 +26,7 @@ export class BookingsComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+
     this.bookingRecordService.findAllBookingRecords()
       .subscribe(bookingRecords => {
         this.bookingRecords = bookingRecords;
@@ -36,6 +35,10 @@ export class BookingsComponent implements OnInit{
       })
   }
 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 
 
   applyFilter(event: Event) {

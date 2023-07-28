@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
@@ -12,7 +12,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./cars.component.css']
 })
 
-  export class CarsComponent implements OnInit {
+  export class CarsComponent implements OnInit, AfterViewInit {
   displayedColumns: Array<string> = ['id', 'brand', 'model', 'productionYear', 'color', 'available', 'price'];
   dataSource: MatTableDataSource<Car>;
   cars!: Array<Car>;
@@ -39,9 +39,13 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
     console.log('inside cars component constructor')
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  ngOnInit() {
+
     this.fetchCars();
   }
 
