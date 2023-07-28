@@ -14,15 +14,15 @@
     </ng-container>
 
     <!-- BookedCar Column -->
-    <ng-container matColumnDef="bookedCar">
+    <ng-container matColumnDef="bookedCar{id}">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Booked Car </th>
-      <td mat-cell *matCellDef="let row"> {{row.bookedCar}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.bookedCar.id}} </td>
     </ng-container>
 
     <!-- Client Column -->
-    <ng-container matColumnDef="client">
+    <ng-container matColumnDef="client{id}">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Client </th>
-      <td mat-cell *matCellDef="let row"> {{row.client}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.client.id}} </td>
     </ng-container>
 
     <!-- startDate Column -->

@@ -11,7 +11,7 @@ import {MatSort} from "@angular/material/sort";
   styleUrls: ['./bookings.component.css']
 })
 export class BookingsComponent implements OnInit, AfterViewInit{
-  displayedColumns: string[] = ['id', 'bookedCar', 'client', 'startDate', 'endDate', 'fullPriceInEuroCents'];
+  displayedColumns: string[] = ['id', 'bookedCar{id}', 'client{id}', 'startDate', 'endDate', 'fullPriceInEuroCents'];
   dataSource: MatTableDataSource<BookingRecord>;
   bookingRecords!: Array<BookingRecord>;
 
