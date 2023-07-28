@@ -12,5 +12,6 @@ export const homePageUrl = ''
 export const clientsPageUrl = 'clients'
 export const loginPageUrl ='login'
 export const carsPageUrl='cars'
+export const bookingsPageUrl = 'bookings'
 export const notFoundPageUrl = '**'
 

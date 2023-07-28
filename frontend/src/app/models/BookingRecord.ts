@@ -1,7 +1,7 @@
 export interface BookingRecord{
   id: number;
-  bookedCar: string;
-  client: string;
+  bookedCarId: number;
+  clientId: number;
   startDate: string;
   endDate: string;
   fullPriceInEuroCents: number;

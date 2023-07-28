@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "bookedCar": {
+      "id": 1
+    },
+    "client": {
+      "id": 1
+    },
+    "startDate": "2023-07-26",
+    "endDate": "2023-07-31",
+    "fullPriceInEuroCents": 250000
+  }
+]

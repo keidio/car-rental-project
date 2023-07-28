@@ -16,7 +16,7 @@ import {RouterModule, RouterOutlet} from "@angular/router";
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
-import {carsPageUrl, clientsPageUrl, homePageUrl, loginPageUrl, notFoundPageUrl} from "./models/links";
+import {bookingsPageUrl, carsPageUrl, clientsPageUrl, homePageUrl, loginPageUrl, notFoundPageUrl} from "./models/links";
 import {ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './components/login/login.component';
 import {authGuard} from "./services/login-service/login.service";
@@ -52,6 +52,7 @@ import { BookingsComponent } from './components/bookings/bookings.component';
       {path: clientsPageUrl, component: ClientsComponent, canActivate: [authGuard]},
       {path: loginPageUrl, component: LoginComponent},
       {path: carsPageUrl, component: CarsComponent},
+      {path: bookingsPageUrl, component: BookingsComponent},
       {path: notFoundPageUrl, component: NotFoundPageComponent}
     ]),
     MatIconModule,

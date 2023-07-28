@@ -5,7 +5,6 @@ import {MatPaginator} from "@angular/material/paginator";
 import {ClientService} from "../../services/client/client.service";
 import {Client} from "../../models/client";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
@@ -117,7 +116,6 @@ export class ClientsComponent implements OnInit, AfterViewInit {
 
     return validCount / controlCount * 100;
   }*/
-
 }
 
 
