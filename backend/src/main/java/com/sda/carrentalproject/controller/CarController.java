@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -25,11 +24,10 @@ public class CarController {
     private final CarMapper carMapper;
 
 
-    public CarController(CarService carService, CarMapper carMapper, CarMapper carMapper1) {
+    public CarController(CarService carService, CarMapper carMapper) {
         this.carService = carService;
-        this.carMapper = carMapper1;
+        this.carMapper = carMapper;
     }
-
 
     // /cars?available=true
     @GetMapping("/cars")
@@ -43,7 +41,7 @@ public class CarController {
     }
 
     @PostMapping("/cars")
-    ResponseEntity<CarDto> createNewCar(@RequestBody CarDto carToSave, UriComponentsBuilder ucb) {
+    public ResponseEntity<CarDto> createNewCar(@RequestBody CarDto carToSave, UriComponentsBuilder ucb) {
         log.info("trying to save new car: [{}]", carToSave);
         Car createdCar = carService.saveNewCar(carMapper.fromDtoToEntity(carToSave));
 
@@ -54,6 +52,10 @@ public class CarController {
         return ResponseEntity.created(path).body(carMapper.fromEntityToDto(createdCar));
     }
 
-
-
+    @DeleteMapping("/cars/{id}")
+    public ResponseEntity<Void> deleteCarById(@PathVariable Long id){
+        log.info("Deleting car by id: [{}]", id);
+        carService.deleteCarById(id);
+        return ResponseEntity.noContent().build();
+    }
 }
