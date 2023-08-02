@@ -5,6 +5,7 @@ import com.sda.carrentalproject.dto.CarDto;
 import com.sda.carrentalproject.mapper.CarMapper;
 import com.sda.carrentalproject.service.CarService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -17,16 +18,24 @@ import java.util.Map;
 @RestController
 @Slf4j
 @RequestMapping("/api")
-// TODO: make it safe
 @CrossOrigin("${frontend.trusted-url}")
 public class CarController {
     private final CarService carService;
     private final CarMapper carMapper;
 
+    private final String allowedOrigin;
 
-    public CarController(CarService carService, CarMapper carMapper) {
+
+    public CarController(CarService carService, CarMapper carMapper, @Value ("${frontend.trusted-url}") String allowedOrigin) {
         this.carService = carService;
         this.carMapper = carMapper;
+        this.allowedOrigin = allowedOrigin;
+
+        log.info("Allowed origin: [{}]", allowedOrigin);
+    }
+
+    public String getAllowedOrigin() {
+        return allowedOrigin;
     }
 
     // /cars?available=true

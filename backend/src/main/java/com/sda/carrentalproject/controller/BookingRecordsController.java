@@ -6,26 +6,36 @@ import com.sda.carrentalproject.dto.CarBookingRequestDto;
 import com.sda.carrentalproject.mapper.BookingRecordMapper;
 import com.sda.carrentalproject.service.BookingRecordService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 @Slf4j
 @RequestMapping("/api")
+@CrossOrigin("${frontend.trusted-url}")
 public class BookingRecordsController {
 
     private final BookingRecordService bookingRecordService;
     private final BookingRecordMapper bookingRecordMapper;
 
-    public BookingRecordsController(BookingRecordService bookingRecordService, BookingRecordMapper bookingRecordMapper) {
+    private final String allowedOrigin;
+
+    public BookingRecordsController(BookingRecordService bookingRecordService, BookingRecordMapper bookingRecordMapper, @Value("${frontend.trusted-url}") String allowedOrigin) {
         this.bookingRecordService = bookingRecordService;
         this.bookingRecordMapper = bookingRecordMapper;
+        this.allowedOrigin = allowedOrigin;
+
+        log.info("Allowed origin: [{}]", allowedOrigin);
+    }
+
+    public String getAllowedOrigin() {
+        return allowedOrigin;
     }
 
     @GetMapping("/booking-records")
