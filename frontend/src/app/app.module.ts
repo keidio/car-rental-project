@@ -62,7 +62,7 @@ import { AddNewClientComponent } from './components/add-new-client/add-new-clien
       {path: clientsPageUrl, component: ClientsComponent, canActivate: [authGuard]},
       {path: loginPageUrl, component: LoginComponent},
       {path: carsPageUrl, component: CarsComponent},
-      {path: bookingsPageUrl, component: BookingsComponent},
+      {path: bookingsPageUrl, component: BookingsComponent, canActivate: [authGuard]},
       {path: addNewClientPageUrl, component: AddNewClientComponent},
       {path: notFoundPageUrl, component: NotFoundPageComponent}
     ]),
