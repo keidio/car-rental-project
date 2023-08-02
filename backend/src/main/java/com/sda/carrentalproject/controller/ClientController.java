@@ -67,5 +67,13 @@ public class ClientController {
                 .body(clientMapper.fromEntityToDto(createdClient));
     }
 
+    @DeleteMapping("/clients/{id}")
+    public ResponseEntity<Void> deleteClientById(@PathVariable Long id){
+        log.info("Deleting car by id: [{}]", id);
+        clientService.deleteClientById(id);
+
+        return ResponseEntity.noContent().build();
+    }
+
 
 }

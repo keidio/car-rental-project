@@ -5,6 +5,7 @@ import com.sda.carrentalproject.exception.WrongClientIdException;
 import com.sda.carrentalproject.repository.ClientRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -45,5 +46,15 @@ public class ClientService {
                     return client;
                 })
                 .orElseThrow(() -> new WrongClientIdException("No client with id: [%s]".formatted(id)));
+    }
+
+    @Transactional
+    public void deleteClientById(Long id) {
+        log.info("Deleting item with id: [{}]", id);
+        if(clientRepository.existsById(id)){
+            clientRepository.deleteById(id);
+        }else {
+            throw new WrongClientIdException("No client with id: " + id);
+        }
     }
 }
