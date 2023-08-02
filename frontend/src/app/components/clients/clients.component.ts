@@ -4,7 +4,6 @@ import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
 import {ClientService} from "../../services/client/client.service";
 import {Client} from "../../models/client";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {addNewClientPageUrl} from "../../models/links";
 @Component({
   selector: 'app-clients',
@@ -54,6 +53,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
   }
 
   /*calculateFormProgress(form: FormGroup): number {
