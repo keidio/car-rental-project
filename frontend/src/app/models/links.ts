@@ -13,5 +13,6 @@ export const clientsPageUrl = 'clients'
 export const loginPageUrl ='login'
 export const carsPageUrl='cars'
 export const bookingsPageUrl = 'bookings'
+export const addNewClientPageUrl ='add-new-client'
 export const notFoundPageUrl = '**'
 

@@ -16,7 +16,15 @@ import {RouterModule, RouterOutlet} from "@angular/router";
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
-import {bookingsPageUrl, carsPageUrl, clientsPageUrl, homePageUrl, loginPageUrl, notFoundPageUrl} from "./models/links";
+import {
+  addNewClientPageUrl,
+  bookingsPageUrl,
+  carsPageUrl,
+  clientsPageUrl,
+  homePageUrl,
+  loginPageUrl,
+  notFoundPageUrl
+} from "./models/links";
 import {ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './components/login/login.component';
 import {authGuard} from "./services/login-service/login.service";
@@ -24,6 +32,7 @@ import {CarsComponent} from "./components/cars/cars.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { BookingsComponent } from './components/bookings/bookings.component';
+import { AddNewClientComponent } from './components/add-new-client/add-new-client/add-new-client.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +44,8 @@ import { BookingsComponent } from './components/bookings/bookings.component';
     NotFoundPageComponent,
     CarsComponent,
     LoginComponent,
-    BookingsComponent
+    BookingsComponent,
+    AddNewClientComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +63,7 @@ import { BookingsComponent } from './components/bookings/bookings.component';
       {path: loginPageUrl, component: LoginComponent},
       {path: carsPageUrl, component: CarsComponent},
       {path: bookingsPageUrl, component: BookingsComponent},
+      {path: addNewClientPageUrl, component: AddNewClientComponent},
       {path: notFoundPageUrl, component: NotFoundPageComponent}
     ]),
     MatIconModule,

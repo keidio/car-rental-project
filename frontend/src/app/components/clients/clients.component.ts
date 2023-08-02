@@ -5,6 +5,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {ClientService} from "../../services/client/client.service";
 import {Client} from "../../models/client";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {addNewClientPageUrl} from "../../models/links";
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
@@ -20,16 +21,6 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  clientForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    surname: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    phone: new FormControl('', [Validators.required, Validators.minLength(7)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    address: new FormControl(''),
-    hasDrivingLicence: new FormControl(false, Validators.required ),
-    registrationDateTime: new FormControl(null),
-    dateOfBirth: new FormControl('', Validators.required)
-  });
 
   constructor(
     private clientService: ClientService
@@ -39,39 +30,11 @@ export class ClientsComponent implements OnInit, AfterViewInit {
     console.log('inside clients component constructor');
   }
 
-  get name() {
-    return this.clientForm.controls.name;
-  }
-
-  get surname() {
-    return this.clientForm.controls.surname;
-  }
-
-  get phone() {
-    return this.clientForm.controls.phone;
-  }
-
-  get email() {
-    return this.clientForm.controls.email;
-  }
-
-  get address(){
-    return this.clientForm.controls.address;
-  }
-
-  get drivingLicence(){
-    return this.clientForm.controls.hasDrivingLicence;
-  }
-
-  get dateOfBirth() {
-    return this.clientForm.controls.dateOfBirth;
-  }
-
   ngOnInit() {
     this.fetchClient();
   }
 
-  private fetchClient() {
+  public fetchClient() {
     this.clientService.getAllClients()
       .subscribe(clients => {
         this.clients = clients;
@@ -86,18 +49,6 @@ export class ClientsComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
-
-  onSubmit() {
-    console.log(`data to send: ${JSON.stringify(this.clientForm.value, null, 2)}`);
-
-    this.clientService.createClient(this.clientForm.value as Client)
-      .subscribe(value => {
-        this.clientForm.reset();
-        this.fetchClient();
-      });
-
-
   }
 
   ngAfterViewInit(): void {
@@ -116,6 +67,10 @@ export class ClientsComponent implements OnInit, AfterViewInit {
 
     return validCount / controlCount * 100;
   }*/
+
+  openAddNewClientPage() {
+    window.open(addNewClientPageUrl, '_blank');
+  }
 }
 
 
