@@ -3,6 +3,7 @@ Technologies:
 - Spring Boot (backend)
 - Angular (frontend)
 
+TODO:
   Initial requirements:
 - rent cars
 - client db / car db
@@ -18,10 +19,6 @@ Technologies:
 - insurance
 - customer support
 - advertisements
-- And one of those pop-up windows when users starts scrolling back up
-
-
-
 
 
 
